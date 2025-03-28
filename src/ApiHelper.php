@@ -27,26 +27,26 @@ class ApiHelper
      */
     private const INHERITED_MODELS_MAP = [
         Models\GetTransactionResponse::class => [
+            Models\GetBankTransferTransactionResponse::class,
             Models\GetSafetyPayTransactionResponse::class,
             Models\GetVoucherTransactionResponse::class,
-            Models\GetBankTransferTransactionResponse::class,
             Models\GetBoletoTransactionResponse::class,
             Models\GetDebitCardTransactionResponse::class,
-            Models\GetCashTransactionResponse::class,
             Models\GetPrivateLabelTransactionResponse::class,
+            Models\GetCashTransactionResponse::class,
             Models\GetCreditCardTransactionResponse::class,
             Models\GetPixTransactionResponse::class
+        ],
+        Models\GetMovementObjectBaseResponse::class => [
+            Models\GetMovementObjectRefundResponse::class,
+            Models\GetMovementObjectFeeCollectionResponse::class,
+            Models\GetMovementObjectPayableResponse::class,
+            Models\GetMovementObjectTransferResponse::class,
+            Models\GetMovementObjectSettlementResponse::class
         ],
         Models\CreateRegisterInformationBaseRequest::class => [
             Models\CreateRegisterInformationIndividualRequest::class,
             Models\CreateRegisterInformationCorporationRequest::class
-        ],
-        Models\GetMovementObjectBaseResponse::class => [
-            Models\GetMovementObjectFeeCollectionResponse::class,
-            Models\GetMovementObjectPayableResponse::class,
-            Models\GetMovementObjectRefundResponse::class,
-            Models\GetMovementObjectTransferResponse::class,
-            Models\GetMovementObjectSettlementResponse::class
         ]
     ];
 
@@ -85,5 +85,20 @@ class ApiHelper
     public static function deserialize(string $json)
     {
         return CoreHelper::deserialize($json);
+    }
+
+    /**
+     * Converts the properties to a human-readable string representation.
+     *
+     * Sample output:
+     *
+     * $prefix [$properties:key: $properties:value, $processedProperties]
+     */
+    public static function stringify(
+        string $prefix,
+        array $properties,
+        string $processedProperties = ''
+    ): string {
+        return CoreHelper::stringify($prefix, $properties, $processedProperties);
     }
 }

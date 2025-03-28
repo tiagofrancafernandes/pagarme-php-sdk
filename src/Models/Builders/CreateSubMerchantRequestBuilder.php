@@ -33,7 +33,17 @@ class CreateSubMerchantRequestBuilder
     }
 
     /**
-     * Initializes a new create sub merchant request Builder object.
+     * Initializes a new Create Sub Merchant Request Builder object.
+     *
+     * @param string $paymentFacilitatorCode
+     * @param string $code
+     * @param string $name
+     * @param string $merchantCategoryCode
+     * @param string $document
+     * @param string $type
+     * @param CreatePhoneRequest $phone
+     * @param CreateAddressRequest $address
+     * @param string $legalName
      */
     public static function init(
         string $paymentFacilitatorCode,
@@ -43,7 +53,8 @@ class CreateSubMerchantRequestBuilder
         string $document,
         string $type,
         CreatePhoneRequest $phone,
-        CreateAddressRequest $address
+        CreateAddressRequest $address,
+        string $legalName
     ): self {
         return new self(new CreateSubMerchantRequest(
             $paymentFacilitatorCode,
@@ -53,12 +64,13 @@ class CreateSubMerchantRequestBuilder
             $document,
             $type,
             $phone,
-            $address
+            $address,
+            $legalName
         ));
     }
 
     /**
-     * Initializes a new create sub merchant request object.
+     * Initializes a new Create Sub Merchant Request object.
      */
     public function build(): CreateSubMerchantRequest
     {
