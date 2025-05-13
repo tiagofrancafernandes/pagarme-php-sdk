@@ -44,6 +44,7 @@ class CreateSubMerchantRequestBuilder
      * @param CreatePhoneRequest $phone
      * @param CreateAddressRequest $address
      * @param string $legalName
+     * @param string $siteUrl
      */
     public static function init(
         string $paymentFacilitatorCode,
@@ -54,7 +55,8 @@ class CreateSubMerchantRequestBuilder
         string $type,
         CreatePhoneRequest $phone,
         CreateAddressRequest $address,
-        string $legalName
+        string $legalName,
+        string $siteUrl
     ): self {
         return new self(new CreateSubMerchantRequest(
             $paymentFacilitatorCode,
@@ -65,7 +67,8 @@ class CreateSubMerchantRequestBuilder
             $type,
             $phone,
             $address,
-            $legalName
+            $legalName,
+            $siteUrl
         ));
     }
 

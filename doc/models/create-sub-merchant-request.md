@@ -20,6 +20,7 @@ SubMerchant
 | `phone` | [`CreatePhoneRequest`](../../doc/models/create-phone-request.md) | Required | Phone | getPhone(): CreatePhoneRequest | setPhone(CreatePhoneRequest phone): void |
 | `address` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Required | Address | getAddress(): CreateAddressRequest | setAddress(CreateAddressRequest address): void |
 | `legalName` | `string` | Required | Legal name | getLegalName(): string | setLegalName(string legalName): void |
+| `siteUrl` | `string` | Required | Site Url | getSiteUrl(): string | setSiteUrl(string siteUrl): void |
 
 ## Example (as JSON)
 
@@ -54,7 +55,8 @@ SubMerchant
     "line_1": "line_10",
     "line_2": "line_24"
   },
-  "legal_name": "legal_name2"
+  "legal_name": "legal_name2",
+  "site_url": "site_url6"
 }
 ```
 

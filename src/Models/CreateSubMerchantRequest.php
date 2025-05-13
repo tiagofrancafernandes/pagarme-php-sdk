@@ -64,6 +64,11 @@ class CreateSubMerchantRequest implements \JsonSerializable
     private $legalName;
 
     /**
+     * @var string
+     */
+    private $siteUrl;
+
+    /**
      * @param string $paymentFacilitatorCode
      * @param string $code
      * @param string $name
@@ -73,6 +78,7 @@ class CreateSubMerchantRequest implements \JsonSerializable
      * @param CreatePhoneRequest $phone
      * @param CreateAddressRequest $address
      * @param string $legalName
+     * @param string $siteUrl
      */
     public function __construct(
         string $paymentFacilitatorCode,
@@ -83,7 +89,8 @@ class CreateSubMerchantRequest implements \JsonSerializable
         string $type,
         CreatePhoneRequest $phone,
         CreateAddressRequest $address,
-        string $legalName
+        string $legalName,
+        string $siteUrl
     ) {
         $this->paymentFacilitatorCode = $paymentFacilitatorCode;
         $this->code = $code;
@@ -94,6 +101,7 @@ class CreateSubMerchantRequest implements \JsonSerializable
         $this->phone = $phone;
         $this->address = $address;
         $this->legalName = $legalName;
+        $this->siteUrl = $siteUrl;
     }
 
     /**
@@ -286,6 +294,27 @@ class CreateSubMerchantRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Site Url.
+     * Site Url
+     */
+    public function getSiteUrl(): string
+    {
+        return $this->siteUrl;
+    }
+
+    /**
+     * Sets Site Url.
+     * Site Url
+     *
+     * @required
+     * @maps site_url
+     */
+    public function setSiteUrl(string $siteUrl): void
+    {
+        $this->siteUrl = $siteUrl;
+    }
+
+    /**
      * Converts the CreateSubMerchantRequest object to a human-readable string representation.
      *
      * @return string The string representation of the CreateSubMerchantRequest object.
@@ -303,7 +332,8 @@ class CreateSubMerchantRequest implements \JsonSerializable
                 'type' => $this->type,
                 'phone' => $this->phone,
                 'address' => $this->address,
-                'legalName' => $this->legalName
+                'legalName' => $this->legalName,
+                'siteUrl' => $this->siteUrl
             ]
         );
     }
@@ -329,6 +359,7 @@ class CreateSubMerchantRequest implements \JsonSerializable
         $json['phone']                    = $this->phone;
         $json['address']                  = $this->address;
         $json['legal_name']               = $this->legalName;
+        $json['site_url']                 = $this->siteUrl;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }
